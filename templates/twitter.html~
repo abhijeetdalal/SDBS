@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <form action="/twit" method="POST">
+        <title>Twitter main page</title>
+        <link rel='stylesheet' type='text/css' href='../static/css/twitter.css'/>
+        
+    </head>
+    <body>
+        <div id="header"><h1>Welcome To Twitter!</h1></div>
+        <div id="wrapper">
+            <div id="inputs">
+<center>
+                <form >
+		<br>
+            	   Twitter ID: <input type="text" name="twitterid" placeholder="twitter id of user"><br/>
+         
+              
+
+  <input type="radio" name="rcheck" value="0" checked><label>Use default Twitter id for getting tweets </label><br>
+  <input type="radio" name="rcheck" value="1"><label>Use this Twitter id for getting tweets</label>  <br>
+  <input type="radio" name="rcheck" value="2"><label>Do not want linking through id </label> <br>  
+            	   Keyword: <input type="text" name="keyword2" placeholder="Keyword to be searched"><br/>
+            	   No.of Tweets: <input type="text" name="maxcount" placeholder="Count of tweets to fetch"><br/>
+                </form>
+            </div>
+</center>
+<center> 
+<br>
+<br>                    
+<input type="submit"  name=btn value="DirectSearch" >
+<input type="submit"  name=btn value="BehavioralSearch" >
+</center>
+               
+            </div>
+        </div>
+    </body>
+   </form>
+</html>

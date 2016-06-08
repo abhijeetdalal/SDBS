@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<head>
+<title>Social Driven Behavior and search</title>
+
+<style>
+h1{
+    text-align: center;
+    
+}
+
+label{
+    text-align: center;
+    
+}
+
+type{
+ color: yellow;
+}
+div{
+text-align: center;
+
+}
+body {
+    background-color: lightgray;
+  padding-top: 20px;
+  padding-bottom: 20px;
+   
+}
+
+.center_div {
+    border: 1px solid gray;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    background-color: #d0f0f6;
+    text-align: left;
+    padding: 8px;
+}
+
+p.ex1 {
+    padding: 3cm;
+}
+
+</style>
+
+<title>SDBS</title>
+</head>
+
+<body>
+<b>
+<h1 align="center"> Social Driven Behavior and search</h1>
+<form action="/showSignUp" method="POST">
+<p class="ex1">
+<label  for="keyword"> Enter keyword to search: </label>
+<input type="text" name="keyword2" placeholder="Search Text"/>
+
+<label>Select Social Media:</label>
+
+ <select name="option">
+
+  <option value="twitter">Twitter</option>
+  <option value="facebook">Facebook</option>
+ 
+  </select> 
+<br/><br/>
+
+<br/><br/>
+   <label  > Enter maximum number of tweets you want to extract: </label>
+    <input type="text" name="maxcount" placeholder="Enter maximum count"/>
+  
+<br/><br/>
+<br/><br/>
+
+   <label  > Twitter ID: </label>
+    <input type="text" name="twitterid" placeholder="Twitter id"/>
+
+<br/><br/>
+
+
+ 
+   <label>Type of search:</label>
+<br></br>
+
+  <input type="radio" name="rcheck" value="0" checked><label>Use default Twitter id for getting tweets </label><br>
+  <input type="radio" name="rcheck" value="1"><label>Use this Twitter id for getting tweets</label>  <br>
+  <input type="radio" name="rcheck" value="2"><label>Do not want linking through id </label> <br>
+</p>
+  
+
+
+<div class="jumbotron">
+<p class="lead"></p>
+<input type="submit" name="Submit" value="Submit" bgcolor="blue">
+</p>
+</div>
+
+</form>
+</b>
+</body>
+</html>
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+ <form action="/twit" method="POST">
+<head>
+<style>
+
+</style>
+</head>
+<body>
+<link rel="stylesheet" href="../static/css/home1.css">
+<div class="center_div">
+  <h1>Social Driven Behavior and Search</h1>
+</div>
+
+ <div class="login-buttons">
+	    	    <div id="main-login" class="login-button2" tabindex="130">
+			<label><a href="/home2">Home</a></label>
+	 
+		</div>
+	    	    <div id="main-login" class="login-button2" tabindex="130">
+			<label><a href="/Loginrender">Log out</a></label>
+	     
+		</div>
+		   
+			  </div>
+
+
+
+</body>
+
+<br>
+<br>
+<br>
+<div class="twitter">
+	<div id="wrapper">
+        <h2><center>{{error}}</center></h2>
+        
+      </div></div>
+    </body>
+</form>
+</html>

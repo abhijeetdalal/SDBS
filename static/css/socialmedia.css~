@@ -1,0 +1,61 @@
+
+body {
+	font-family: montserrat;
+	background: url('social.jpg');
+	background-size: cover;
+
+	padding-top: 50px;
+	color: #333;
+}
+
+h1 {
+	font-size: 50px;
+	padding: 15px;
+	text-align: center;
+}
+
+input[type=radio].css-checkbox + label.css-label {
+							padding-left:100px;
+							height:18px; 
+							
+							line-height:18px;
+							background-repeat:no-repeat;
+							background-position: 0 0;
+							font-size:40px;
+							
+							cursor:pointer;
+
+						}
+
+input[type=radio] {
+padding: 17px 100px;
+.txt-rt{text-align:right;}/* text align right */
+.txt-lt{text-align:left;}/* text align left */
+.txt-center{text-align:center;}/* text align center */
+	width: 500px;
+	clear: both;
+}
+
+input[type=submit] {
+	padding: 17px 30px;
+	color: #fff;
+	font-family: 'Oxygen', sans-serif;
+	background: #40A46F;
+	border: 1px solid #40A46F;
+	cursor: pointer;
+	font-size: 40px;
+	transition: all 0.5s ease-out;
+	-webkit-transition: all 0.5s ease-out;
+	-moz-transition: all 0.5s ease-out;
+	-ms-transition: all 0.5s ease-out;
+	-o-transition: all 0.5s ease-out;
+	outline:none;
+	
+	-webkit-appearance: none;
+}
+
+.submit input[type=submit]:hover {
+	 background:#07793D;
+	 border:1px solid #07793D;
+}
+

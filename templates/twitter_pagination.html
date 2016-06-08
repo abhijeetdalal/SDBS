@@ -1,0 +1,33 @@
+{% extends 'base_twitter.html' %}
+{% block body %}
+{% if user %}
+ {{ pagination.info }}
+  {{ pagination.links }}
+  <html>
+ <form method="POST">
+    <table border=2>
+    <thead>
+      <tr>
+      <th>No</th>
+      <th>name</th>
+      <th>Createdat</th>
+      <th>Tweets</th>
+      <tr>
+    </thead>
+    <tbody>
+      {% for users in user %}
+      <tr>
+      <td>{{ loop.index + (page - 1) * per_page }}</td>
+        <td>{{ users[0]}}</td>
+        <td>{{ users[1] }}</td>
+        <td>{{ users[2] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    </table>
+   </form>  
+  </html>
+  {{ pagination.links }}
+{% endif %}
+{% endblock %}
+

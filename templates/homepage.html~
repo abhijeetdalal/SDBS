@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+</style>
+</head>
+<body>
+
+<link rel="stylesheet" href="../static/css/home1.css">
+<div class="center_div">
+  <h1>Social Driven Behavior and Search</h1>
+</div>
+
+
+
+ <div class="login-buttons">
+	    	    <div id="main-login" class="login-button2" tabindex="130">
+			<label><a href="#">Home</a></label>
+	      
+		</div>
+	    	    <div id="main-login" class="login-button2" tabindex="130">
+	     		<label><a href="/Loginrender">Log in</a></label>
+		</div>
+		    <div id="main-signup" class="login-button2" style="border-left-style: none;" tabindex="140">
+			<li role="presentation"><a href="/signUp">Sign Up</a></li>
+	      
+		</div>
+	    	    <div id="main-login" class="login-button2" tabindex="130">
+			<label><a href="/helprender">Help</a></label>
+	      
+		</div>
+
+
+			  </div>
+<br>
+<br>
+<br>
+<br><br>
+
+<br>
+<div class="center_div">
+<font color="green"><br>Social Media has become an important platform for people to collaborate, communicate and staying together. <br><br>There is a huge amount of unstructured data in form of comments, likes/dislikes, conversations and consumer preferences. <br><br>This data gives enormous advantage to the organization where they can understand the consumer preferences, recent trends/fads and branding/marketing related information.<br><br>The Social driven Behaviour and Search is about searching the social media (Facebooks, LinkedIn, Twitter, Google Plus) with the Direct and Behavioral search.<br><br> The search options includes having a global search and searching in the connected/closed world for a given person (id). <br><br>The System also targets creating a social linked tree of the given members, where the search can be made.</font>
+</div>
+
+
+
+</body>
+</html>

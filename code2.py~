@@ -1,0 +1,43 @@
+#!/usr/bin/env python
+import sys, MySQLdb
+import os
+def PrintFields(database, table):
+    
+    host = 'localhost'
+    user = 'root'
+    password = 'admin123'
+    conn = MySQLdb.Connection(db=database, host=host, user=user, passwd=password)
+    mysql = conn.cursor()
+    sql = """ select * from %s """ % table
+    mysql.execute(sql)
+    fields=mysql.fetchall()
+    
+    print '<table bgcolor="skyblue" border="2"><tr><th>ID</th><th>createdat</th><th>Comments</th></tr>'
+    print '<tbody>'
+    type = 0
+    for field in fields:
+        type = type + 1
+        name = field[0]
+        
+        createdat = field[1]
+	tweets= field[2]
+
+        print '<tr><td>' + str(name) + '</td><td>' + str(createdat) + '</td><td>'+str(tweets)+'</td></tr>'
+    
+    print '</tbody>'
+    print '</table>'
+    print '</tbody>'
+    print '</table>'
+    mysql.close()
+    conn.close()
+
+users_database = "twitter"
+users_table = "fb1"
+
+f = open('myfile','w')
+f.write('hi there\n')
+f.write(str(PrintFields(users_database, users_table)))
+
+f.close()
+#PrintFields(users_database, users_table)
+

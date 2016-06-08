@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <form action="/showSignUp" method="POST">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title>Selecting Social media</title>
+	<link rel="stylesheet" href="../static/css/socialmedia.css"/>
+	
+<body>
+
+<h1 style="font-size: 50px;
+	padding: 15px;
+	text-align: center;">Select Social Media</h1>
+<div 
+
+<table width="100%"><center><tr><td width="100%" align="center" valign="middle"><input type="radio" name="radiog_lite" value="0" id="radio1" class="css-checkbox" />
+<label  for="radio1" class="css-label radGroup1">Twitter</label></td>
+<br>
+<br>
+<td width="100%" align="center" valign="middle"><input type="radio" name="radiog_lite" value="1" id="radio2" class="css-checkbox" checked="checked"/>
+<label for="radio2" class="css-label radGroup1">Facebook</label></td>
+<br>
+<br>
+<td width="100%" align="center" valign="middle"><input type="radio" name="radiog_lite" value="2" id="radio3" class="css-checkbox" />
+<label for="radio3" class="css-label radGroup1">Both of these</label></td>
+</center>
+<br>
+<br>
+</div>
+</tr>
+</table>
+<center>
+<input type="submit" value="Submit" >
+</center>
+
+
+		</body>
+                </form>
+		</html>

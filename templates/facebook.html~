@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+     <form action="/fb" method="POST">
+    <head>
+        <title>Facebook main page</title>
+        <link rel='stylesheet' type='text/css' href='../static/css/fb.css' />
+        <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    </head>
+
+    <body>
+        <div id="header"><h1>Welcome To Facebook!</h1></div>
+        <div id="wrapper">
+            <div id="inputs">
+<center>
+                <form name="input"  method="post">
+		<br>
+            	   
+            	   Keyword: <input type="text" name="Keyword to be searched" placeholder="Keyword to be searched"><br/>
+            	   No.of Posts: <input type="text" name="Count of posts to fetch" placeholder="Count of posts"><br/>
+                </form>
+            </div>
+</center>
+<center> 
+<br>
+<br>                    
+<input type="submit"  value="Submit" >
+</center>
+               
+            </div>
+        </div>
+    </body>
+   </form>
+</html>

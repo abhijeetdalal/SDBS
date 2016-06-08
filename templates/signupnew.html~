@@ -1,0 +1,49 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<form action="/signUp" method="POST">
+<meta charset="utf-8">
+<link href="../static/css/signupnew.css" rel='stylesheet' type='text/css' />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--webfonts-->
+<link href='http://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
+<!--//webfonts-->
+</head>
+<body>
+<div class="main">
+      <h1>SDBS Login Form</h1>
+		<form>
+		   <div class="lable">
+		        <div class="col_1_of_2 span_1_of_2">	<input type="text" name="fname" class="text" value="First Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'First Name';}" id="active"></div>
+                <div class="col_1_of_2 span_1_of_2"><input type="text" name="lname" class="text" value="Last Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Last Name';}"></div>
+                <div class="clear"> </div>
+		   </div>
+		   <div class="lable-2">
+		        <input type="text" class="text" name="inputEmail" value="your@email.com " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'your@email.com ';}">
+		        <input type="password" class="text" name="inputPassword" value="Password " onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password ';}">
+		   </div>
+		   <script>
+             function myFunction() {
+                               alert("User Successfully created!");
+                                   }
+      </script>
+		   <div class="submit">
+			  <input type="submit" onclick="myFunction()" value="Create account" >
+		   </div>
+		   <div class="clear"> </div>
+		</form>
+		<!-----//end-main---->
+		</div>
+		 <!-----start-copyright---->
+   		
+				<!-----//end-copyright---->
+</body>
+</form>
+</html>
