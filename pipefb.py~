@@ -1,6 +1,0 @@
-import os
-import sys
-
-
-os.system("python code1.py > 2.html")
-os.system("firefox 2.html")
