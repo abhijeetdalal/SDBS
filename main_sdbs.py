@@ -125,7 +125,7 @@ def twit_details():
         cur.execute("delete from filter_local_tweets")
    
     if (linkid=="0" and button=="BehavioralSearch"):
-        for d in csv.DictReader(open(keyword+'.csv'), delimiter='\t'):
+        for d in csv.DictReader(open('csv\\'+keyword+'.csv'), delimiter='\t'):
             counts.append((d[keyword])) 
     
         os.system(("python linking_through_twitid.py") )
