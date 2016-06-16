@@ -1,16 +1,15 @@
-
 import json,requests
 import sys,csv,re,os
 import time
 from time import gmtime, strftime
-import MySQLdb as mdb
 import multiprocessing
+import DbConnection
 
 v=False
 outFile=None
 
 ACCESSTOKEN='EAACEdEose0cBANx25ASHSMatAqH3BDzC5SsXvYK4sGhs57jksZCsJ9H2wZBgUllN32KRG7XjJm8RASVxNeqNIWikLsQniWAmZAvlPRXUNSbrSWZBZA5mcgCVGrgdsQntKGbl6Oqzrifli8lz5B0EfyBgciMpCJVCkrl0n6VOOlQZDZD'
-con = mdb.connect('localhost', 'root', 'admin123', 'SDBS_database')
+con = DbConnection.dbConnection()
 
 LIMIT=sys.argv[2]
 

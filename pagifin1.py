@@ -1,11 +1,11 @@
 from flask import Flask, render_template, json, request,redirect,session,jsonify,current_app
 from flask import request
-import MySQLdb as mdb
 from flask.ext.paginate import Pagination
+import DbConnection
 
 app = Flask(__name__)
 
-con = mdb.connect('localhost', 'root', 'admin123', 'SDBS_database')
+con = DbConnection.dbConnection()
 
 @app.route('/')
 @app.route('/index')

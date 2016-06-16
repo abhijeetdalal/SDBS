@@ -1,13 +1,11 @@
-try:
-    import json
-    import MySQLdb as mdb
-    from sys import argv
-except ImportError:
-    import simplejson as json
+import json
+from sys import argv
+import simplejson as json
+import DbConnection
 
 tweets_filename = 't2.txt'
 tweets_file = open(tweets_filename, "r")
-con = mdb.connect('localhost', 'root', 'admin123', 'SDBS_database');
+con = DbConnection.dbConnection()
 for line in tweets_file:
     try:
         

@@ -1,16 +1,14 @@
 from flask import Flask, render_template, json, request,redirect,session,jsonify,current_app,url_for
-from flask.ext.mysql import MySQL
 from twython import Twython
 from werkzeug import generate_password_hash, check_password_hash
 import os,sys,csv,time
 from flask import request
-import MySQLdb as mdb
 from flask.ext.paginate import Pagination
+import DbConnection
 
-mysql = MySQL()
 app = Flask(__name__)
 
-con = mdb.connect('localhost', 'root', 'admin123')
+con = DbConnection.dbConnection()
 
 @app.route('/')
 def main():
@@ -136,56 +134,36 @@ def twit_details():
     
     if (linkid=="1" and button=="BehavioralSearch"):
         for d in csv.DictReader(open(keyword+'.csv'), delimiter='\t'):
-            counts.append((d[keyword])) 
-    
-        os.system(("python linking_through_twitid.py {}".format(twitid)) )
+			counts.append((d[keyword])) 
+	os.system(("python linking_through_twitid.py {}".format(twitid)) )
 	for i in range(0,len(counts)):
-            os.system(("python globalsearch.py {} {}".format(maxcnt,counts[i])) ) 
-	    os.system(("python store_globaldata_to_sql.py {}".format(counts[i])) )
-        os.system("python pagifin.py")
+		os.system(("python globalsearch.py {} {}".format(maxcnt,counts[i])) ) 
+		os.system(("python store_globaldata_to_sql.py {}".format(counts[i])) )
+		os.system("python pagifin.py")
 
     if (linkid=="2" and button=="BehavioralSearch"): 
         for d in csv.DictReader(open(keyword+'.csv'), delimiter='\t'):
             counts.append((d[keyword])) 
     	
 	for i in range(0,len(counts)):
-            print counts[i]
-            os.system(("python globalsearch.py {} {}".format(maxcnt,counts[i])) ) 
-	    os.system(("python store_globaldata_to_sql.py {}".format(counts[i])) )
-        os.system("python pagifin.py") 
-    if (linkid=="0" and button=="DirectSearch"):
+		os.system(("python globalsearch.py {} {}".format(maxcnt,counts[i])) ) 
+		os.system(("python store_globaldata_to_sql.py {}".format(counts[i])) )
+		os.system("python pagifin.py") 
 	
-	print "key:",keyword
+    if (linkid=="0" and button=="DirectSearch"):
         os.system(("python linking_through_twitid.py") )
         os.system(("python globalsearch.py {} {}".format(maxcnt,'"'+keyword+'"')) ) 
 	os.system(("python store_globaldata_to_sql.py {}".format('"'+keyword+'"')) )
-    return redirect(url_for('twitpagination'))    
-        #os.system("python pagifin.py")
-        #return render_template('pagi1.html')
+        return redirect(url_for('twitpagination'))
        
         
     if (linkid=="1" and button=="DirectSearch"):
-	
-	keyword="'"+keyword+"'"
-	print "key:",keyword
-       
         os.system(("python linking_through_twitid.py {}".format(twitid)) )
-	os.system(("python globalsearch.py {} {}".format(maxcnt,keyword)) ) 
-	os.system(("python store_globaldata_to_sql.py {}".format(keyword)) )
-        os.system("python pagifin.py")
-
-    if (linkid=="2" and button=="DirectSearch"): 
-	
-	keyword="'"+keyword+"'"
-	print "key:",keyword
-    	
-        os.system(("python globalsearch.py {} {}".format(maxcnt,keyword)) ) 
-	os.system(("python store_globaldata_to_sql.py {}".format(keyword)) )
-
-        os.system("python pagifin.py")
+	os.system(("python globalsearch.py {} {}".format(maxcnt,'"'+keyword+'"')) ) 
+	os.system(("python store_globaldata_to_sql.py {}".format('"'+keyword+'"')) )
+        return redirect(url_for('twitpagination'))
 
     if (button=="Cancel"):
-        
         return render_template('twitter_main.html')
 
 

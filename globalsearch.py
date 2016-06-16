@@ -3,10 +3,10 @@ from sys import argv
 import sys
 import jsonpickle
 import os
-import MySQLdb as mdb
+import DbConnection
 
 
-con = mdb.connect('localhost', 'root', 'admin123', 'SDBS_database');
+con = DbConnection.dbConnection()
 with con:
         cur = con.cursor()
         cur.execute("SELECT * from twitter_api_key")

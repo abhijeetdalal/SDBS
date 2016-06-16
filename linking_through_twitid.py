@@ -1,12 +1,12 @@
 from sys import argv
-import MySQLdb as mdb
 import sys
 import time
 import cPickle
 import twitter
 from twitter.oauth_dance import oauth_dance
+import DbConnection
 
-con = mdb.connect('localhost', 'root', 'admin123', 'SDBS_database');
+con = DbConnection.dbConnection()
 with con:
         cur = con.cursor()
         cur.execute("SELECT * from twitter_api_key")
