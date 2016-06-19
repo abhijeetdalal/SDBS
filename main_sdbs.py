@@ -112,8 +112,10 @@ def twit_details():
     keyword = request.form['keyword2']
     linkid=request.form['rcheck']
     twitid=request.form['twitterid']
-    maxcnt=int(request.form['maxcount'])
-    button=request.form['btn']
+    maxcnt=request.form['maxcount']
+    if(maxcnt!=''):
+		maxcnt=int(maxcnt)	
+    button=request.form['btn']	
     counts = []
     with con:
         cur = con.cursor()
@@ -153,7 +155,7 @@ def twit_details():
         return redirect(url_for('twitpagination'))
 
     if (button=="Cancel"):
-        return render_template('twitter_main.html')
+        return render_template('social_media_option.html')
 
 
 @app.route('/twitpagination' , methods=['POST','GET'])

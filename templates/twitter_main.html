@@ -18,18 +18,21 @@
 		}
 	}
 
+	var whichPressed;
 	function checkForm() {
-		var keywordField = document.getElementById('keyword2');
-		if(keywordField.value.trim() == "") {
-			alert("Please enter keyword!");
-			keywordField.focus();
-			return false;
-		} 
-		var maxcountField = document.getElementById('maxcount');
-		if(maxcountField.value.trim() =="") {
-			alert("Please enter number of tweets");
-			maxcountField.focus();
-			return false;
+		if(whichPressed != 'Cancel') {
+			var keywordField = document.getElementById('keyword2');
+			if(keywordField.value.trim() == "") {
+				alert("Please enter keyword!");
+				keywordField.focus();
+				return false;
+			} 
+			var maxcountField = document.getElementById('maxcount');
+			if(maxcountField.value.trim() =="") {
+				alert("Please enter number of tweets");
+				maxcountField.focus();
+				return false;
+			}
 		}
 		var twitteridText = document.getElementsByName("twitterid");
 		twitteridText[0].disabled = false;
@@ -48,7 +51,6 @@
 		var twitteridLink = document.getElementsByName("twitteridLink");
 		twitteridLink[0].href = "/screen_name";
 	}
-
 	</script>
 </head>
 <body onload="pageLoad()">
@@ -61,7 +63,7 @@
 		<a class="btn btn-primary btn-sm active" href="/Loginrender" role="button">Log out</a>
 		</div>
 		<div id="header"><h1>Welcome To Twitter based Search!</h1></div>
-		<form action="/twit_details" method="POST" onsubmit="return checkForm();" class="navbar-form navbar-center">
+		<form action="/twit_details" method="POST" onsubmit="return checkForm();" class="navbar-form navbar-center" id="twitterMainForm">
 			<div class="panel panel-primary">
 				<div class=panel-heading>
 					<div class="panel-body">
@@ -98,9 +100,9 @@
 				</div>
 			</div>
 			<div>
-				<input type="submit"  name=btn value="DirectSearch" class="btn btn-primary btn-sm active"/>
-				<input type="submit"  name=btn value="BehavioralSearch" class="btn btn-primary btn-sm active"/>
-				<input type="submit"  name=btn value="Cancel" class="btn btn-danger btn-sm active"/>
+				<input type="submit"  name=btn value="DirectSearch" class="btn btn-primary btn-sm active" onclick="whichPressed=this.value"/>
+				<input type="submit"  name=btn value="BehavioralSearch" class="btn btn-primary btn-sm active"onclick="whichPressed=this.value"/>
+				<input type="submit"  name=btn value="Cancel" class="btn btn-danger btn-sm active"onclick="whichPressed=this.value"/>
 			</div>
 		</form>
 	</div>
