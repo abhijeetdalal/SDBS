@@ -23,12 +23,10 @@ api = tweepy.API(auth, wait_on_rate_limit=True,
 if (not api):
     print ("Can't Authenticate")
     sys.exit(-1)
-print argv[1],argv[2] 
-str1=(argv[2]) 
+keyword=(argv[2]) 
 maxcnt=int(argv[1])
-print maxcnt
 
-searchQuery = str1
+searchQuery = keyword
 maxTweets = maxcnt 
 tweetsPerQry = 100  
 fName = 't2.txt' 
@@ -37,7 +35,7 @@ sinceId = None
 max_id = -1L
 
 tweetCount = 0
-print("Downloading max {0} tweets".format(maxTweets))
+print("globalsearch.py, Downloading max {0} tweets".format(maxTweets))
 with open(fName, 'w') as f:
     while tweetCount < maxTweets:
         try:
@@ -62,14 +60,7 @@ with open(fName, 'w') as f:
                 f.write(jsonpickle.encode(tweet._json, unpicklable=False) +
                         '\n')
             tweetCount += len(new_tweets)
-	    print tweetCount
-            print("Downloaded {0} tweets".format(tweetCount))
             max_id = new_tweets[-1].id
         except tweepy.TweepError as e:
-            
-            print("some error : " + str(e))
+            print("globalsearch.py, Error : " + str(e))
             break
-
-print ("Downloaded {0} tweets, Saved to {1}".format(tweetCount, fName))
-
-

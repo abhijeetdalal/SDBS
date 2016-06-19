@@ -1,59 +1,47 @@
 <!DOCTYPE html>
 <html>
- <form action="/check_selected_media_options" method="POST">
+ 
 <head>
-<style>
-
-</style>
+	<title>SDBS Media Selection</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="../static/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../static/bootstrap-3.3.6-dist/css/signin.css" rel="stylesheet">
 </head>
 <body>
-<link rel="stylesheet" href="../static/css/home1.css">
-
-<div class="center_div">
-  <h1>Social Driven Behavior and Search</h1>
-</div>
-
- <div class="login-buttons">
-	    	    <div id="main-login" class="login-button2" tabindex="130">
-			<label><a href="/home_render">Home</a></label>
-	 
+	<div class="container">
+		<div class="well well-lg" style="background: #337ab7; color:white;"><h1>Social Driven Behavior and Search</h1></div>
+		<div align="right">
+		<a class="btn btn-primary btn-sm active" href="/home_render" role="button" >Home</a>
+		<a class="btn btn-default btn-sm" href="#" role="button" disabled="disabled">Sign Up</a>
+		<a class="btn btn-primary btn-sm active" href="/helprender" role="button">Help</a>
+		<a class="btn btn-primary btn-sm active" href="/Loginrender" role="button">Log out</a>
 		</div>
-	    	    <div id="main-login" class="login-button2" tabindex="130">
-			<label><a href="/Loginrender">Log out</a></label>
-	     
-		</div>
-	
-			  </div>
-
-<br>
-<br>
-<br>
-        <div id="header"><h1>Select Social Media</h1></div>
-<div class="twitter">
-        <div id="wrapper">
-            <div id="inputs">
-
-                <form >
-		<br><br>
-<div class="social_id"> <font size="4.5">           	
-	  <span style="padding-left:200px">
-	  <input type="radio" name="radiog_lite" value="0" checked><label>Twitter</label><span style="padding-left:200px">
-	  <input type="radio" name="radiog_lite" value="1"><label>Facebook</label><span style="padding-left:100px">
-
-<br>
-
-</div>
-
-
-
-
-<center>
-<br>
-<input type="submit"  name=btn value="Submit" >
-</center>
-
-
-
+		<div id="header"><h1>Media Selection!</h1></div>
+		<form action="/check_selected_media_options" method="POST" class="form-inline">
+			<div class="panel panel-primary">
+				<div class=panel-heading>
+					<div class="panel-body">
+						<div id="header"><h1>Select Social Media</h1></div>
+						
+						<div class="radio">
+							<label>
+							<input type="radio" name="radiog_lite" id="radiog_lite" value="0" checked></input>
+							Twitter
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+							<input type="radio" name="radiog_lite" id="radiog_lite" value="1"></input>
+							Facebook
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<input type="submit"  name=btn value="Submit" class="btn btn-primary btn-sm active"/>
+			</div>
+		</form>
+	</div>
 </body>
-</form>
 </html>

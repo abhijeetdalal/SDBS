@@ -1,108 +1,84 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html>
 
 <head>
 	<title>Sign up</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="../static/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../static/bootstrap-3.3.6-dist/css/signin.css" rel="stylesheet">
+	
+	<script type="text/javascript">
+		 function checkForm(form)
+		 { 
 
-		<meta charset="utf-8">
-		<link href="../static/css/style.css" rel='stylesheet' type='text/css' />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<!--webfonts-->
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,300,600,700' rel='stylesheet' type='text/css'>
-		<!--//webfonts-->
+		if(form.username.value == "") { alert("Error: Username cannot be blank!"); form.username.focus(); return false; } 
+		if(form.pwd1.value != form.pwd2.value) { alert("Please check that entered password and confirmed password are same!"); form.usr.focus(); return false; } 
+
+		if(form.ans.value =="") { alert("Error: answer field should not blank"); form.ans.focus(); return false; }
+
+		re = /^\w+$/; if(!re.test(form.username.value)) { alert("Error: Username must contain only letters, numbers and underscores!"); form.username.focus(); return false; } 
+
+		if(form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) { if(form.pwd1.value.length < 6) { alert("Error: Password must contain at least six characters!"); form.pwd1.focus(); return false; } 
+
+		if(form.pwd1.value == form.username.value) { alert("Password must be different from Username!"); form.usr.focus(); return false; } 
+
+
+		re = /[0-9]/; if(!re.test(form.pwd1.value)) { alert("password must contain at least one number (0-9)!"); form.pwd1.focus(); return false; }
+
+
+		re = /[a-z]/; if(!re.test(form.pwd1.value)) { alert("password must contain at least one lowercase letter (a-z)!"); form.pwd1.focus(); return false; } 
+
+
+
+		re = /[A-Z]/; if(!re.test(form.pwd1.value)) { alert("password must contain at least one uppercase letter (A-Z)!"); form.pwd1.focus(); return false; }
+
+		 } 
+
+		re = /[0]/; if(re.test(form.role1.value)) { alert("please select security question!"); form.role1.focus(); return false; }
+
+		if(form.ans.value =="") { alert("answer field should not blank"); form.ans.focus(); return false; }
+
+		alert("User created Successfully! "); return true; } 
+
+
+
+	</script>
 </head>
 
 <body>
 
-
-
-
-
-
-
-<script type="text/javascript">
- function checkForm(form)
- { 
-
-if(form.username.value == "") { alert("Error: Username cannot be blank!"); form.username.focus(); return false; } 
-if(form.pwd1.value != form.pwd2.value) { alert("Please check that entered password and confirmed password are same!"); form.usr.focus(); return false; } 
-
-if(form.ans.value =="") { alert("Error: answer field should not blank"); form.ans.focus(); return false; }
-
-re = /^\w+$/; if(!re.test(form.username.value)) { alert("Error: Username must contain only letters, numbers and underscores!"); form.username.focus(); return false; } 
-
-if(form.pwd1.value != "" && form.pwd1.value == form.pwd2.value) { if(form.pwd1.value.length < 6) { alert("Error: Password must contain at least six characters!"); form.pwd1.focus(); return false; } 
-
-if(form.pwd1.value == form.username.value) { alert("Password must be different from Username!"); form.usr.focus(); return false; } 
-
-
-re = /[0-9]/; if(!re.test(form.pwd1.value)) { alert("password must contain at least one number (0-9)!"); form.pwd1.focus(); return false; }
-
-
-re = /[a-z]/; if(!re.test(form.pwd1.value)) { alert("password must contain at least one lowercase letter (a-z)!"); form.pwd1.focus(); return false; } 
-
-
-
-re = /[A-Z]/; if(!re.test(form.pwd1.value)) { alert("password must contain at least one uppercase letter (A-Z)!"); form.pwd1.focus(); return false; }
-
- } 
-
-re = /[0]/; if(re.test(form.role1.value)) { alert("please select security question!"); form.role1.focus(); return false; }
-
-if(form.ans.value =="") { alert("answer field should not blank"); form.ans.focus(); return false; }
-
-alert("User created Successfully! "); return true; } 
-
-
-
-</script>
-
-
-	 <!-----start-main---->
-	 <div class="main">
-		<div class="login-form">
-			<h1>User Signup</h1>
-					<h2><center>{{error}}</center></h2>
-					 <form action="/checksignUp" method="POST" ... onsubmit="return checkForm(this);">
-					
-					 <p>User Name:<span style="padding-left:50px"> <input type="text" name="username" title="Username must not be blank and contain only letters, numbers and underscores." type="text" required pattern="\w+" name="username"></p>
-					  <p>Password:<span style="padding-left:60px"> <input type="password" name="pwd1" title="Password must contain at least 6 characters, including UPPER/lowercase and numbers." type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="pwd1" onchange=" this.setCustomValidity(this.validity.patternMismatch ? this.title : ''); if(this.checkValidity()) form.pwd2.pattern = this.value; "></p>
-				
-					  <br><p>Confirm Password: <input type="password" name="pwd2" title="Please enter the same Password as above." type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="pwd2" onchange=" this.setCustomValidity(this.validity.patternMismatch ? this.title : ''); "></p> 
+	<div class="container">
+		<div class="well well-lg" style="background: #337ab7; color:white;"><h1>Social Driven Behavior and Search</h1></div>
+		<form action="/Login" method="POST" onsubmit="return checkForm(this);" class="form-signin">
+			<div class="panel panel-primary">
+				<div class=panel-heading>
+					<div class="panel-body">
+						<h2 class="form-signin-heading">User Signup</h2>
+						<h2>{{error}}</h2>
+								
+						<label for="username" class="sr-only">User Name</label>
+						<input type="text" id="username" name="username" class="form-control" placeholder="User Name" required pattern="\w+" title="Username must not be blank and contain only letters, numbers and underscores."></input>
+						<br/>
+						<label for="pwd1" class="sr-only">Password</label>
+						<input type="password" id="pwd1" name="pwd1" class="form-control" placeholder="Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Password must contain at least 6 characters, including UPPER/lowercase and numbers."></input>
+						<label for="pwd2" class="sr-only">Confirm Password</label>
+						<input type="password" id="pwd2" name="pwd2" class="form-control" placeholder="Confirm Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Please enter the same Password as above." onchange=" this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"></input>
 						
-
-					       <p>
-					        <label for="role">Select Security Question </label> <br><br>  
-					        <select name="role" id="role1"> 
-    
-						<option value=0>Please Select</option>
-						<option value=1>What is your birth place?</option>
-						<option value=2>What is youe nick name?</option>
-						<option value=3>What was the name of your first pet?</option>
-					        </select> </p><br>
-
-						<p>Answer:  <input type="text" name="ans"></p>
-					
-					<div class="submit">
-					 <p><input type="submit" value="Submit"></p> 
-					 </form>
-						
-						
-							
-					</div>	
-					
-				</form>
+						<label for="role">Select Security Question </label>
+						<select class="form-control" name="role" id="role1">
+							<option value=0>Please Select</option>
+							<option value=1>What is your birth place?</option>
+							<option value=2>What is youe nick name?</option>
+							<option value=3>What was the name of your first pet?</option>
+						</select>
+						<br/>
+						<label for="ans" class="sr-only">Answer</label>
+						<input type="text" id="ans" name="ans" class="form-control" placeholder="Answer" required pattern="\w+" title="Security answer."></input>					
+					</div>
+				</div>
 			</div>
-
-		</div>
-			 <!-----//end-main---->
-		 		
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+		</form>
+	</div>
 </body>
 </html>

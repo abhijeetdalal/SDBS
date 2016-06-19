@@ -2,102 +2,108 @@
 <html>
  
 <head>
-<title>Twitter based Search</title>
-<link rel="stylesheet" href="../static/css/home1.css"/>
-<script type="text/javascript">
-function pageLoad() {
-	var twitteridText = document.getElementsByName("twitterid");
-	if(twitteridText[0].value!="") {
+	<title>Twitter based Search</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> </link>
+	<link href="../static/bootstrap-3.3.6-dist/css/signin.css" rel="stylesheet"></link>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	function pageLoad() {
+		var twitteridText = document.getElementsByName("twitterid");
+		if(twitteridText[0].value!="") {
+			twitteridText[0].disabled = false;
+			var radioTwitterId = document.getElementsByName("rcheck");
+			radioTwitterId[1].checked = true;
+			enableTwitterIDFields();
+		}
+	}
+
+	function checkForm() {
+		var keywordField = document.getElementById('keyword2');
+		if(keywordField.value.trim() == "") {
+			alert("Please enter keyword!");
+			keywordField.focus();
+			return false;
+		} 
+		var maxcountField = document.getElementById('maxcount');
+		if(maxcountField.value.trim() =="") {
+			alert("Please enter number of tweets");
+			maxcountField.focus();
+			return false;
+		}
+		var twitteridText = document.getElementsByName("twitterid");
 		twitteridText[0].disabled = false;
-		var radioTwitterId = document.getElementsByName("rcheck");
-		radioTwitterId[1].checked = true;
 	}
-}
-
-function checkForm(form) { 
-	if(form.keyword2.value == "") {
-		alert("Please enter keyword!");
-		form.keyword2.focus();
-		return false;
-	} 
-	if(form.maxcount.value =="") {
-		alert("Please enter number of tweets");
-		form.maxcount.focus();
-		return false;
+	 
+	function disableTwitterIDFields() {
+		var twitteridText = document.getElementsByName("twitterid");
+		twitteridText[0].disabled = true;
+		var twitteridLink = document.getElementsByName("twitteridLink");
+		twitteridLink[0].href = "#";
 	}
-	var twitteridText = document.getElementsByName("twitterid");
-	twitteridText[0].disabled = false;
-}
- 
-function disableTwitterIDFields() {
-	var twitteridText = document.getElementsByName("twitterid");
-	twitteridText[0].disabled = true;
-	var twitteridLink = document.getElementsByName("twitteridLink");
-	twitteridLink[0].href = "#";
-}
 
-function enableTwitterIDFields() {
-	var twitteridText = document.getElementsByName("twitterid");
-	twitteridText[0].disabled = false;
-	var twitteridLink = document.getElementsByName("twitteridLink");
-	twitteridLink[0].href = "/screen_name";
-}
+	function enableTwitterIDFields() {
+		var twitteridText = document.getElementsByName("twitterid");
+		twitteridText[0].disabled = false;
+		var twitteridLink = document.getElementsByName("twitteridLink");
+		twitteridLink[0].href = "/screen_name";
+	}
 
-</script>
+	</script>
 </head>
 <body onload="pageLoad()">
-	<form action="/twit_details" method="POST"  onsubmit="return checkForm(this);">
-	
-	<div class="center_div">
-	  <h1>Social Driven Behavior and Search</h1>
-	</div>
-
-	<div class="login-buttons">
-		<div id="main-login" class="login-button2" tabindex="130">
-			<label><a href="/home_render">Home</a></label>
+	<div class="container">
+		<div class="well well-lg" style="background: #337ab7; color:white;"><h1>Social Driven Behavior and Search</h1></div>
+		<div align="right">
+		<a class="btn btn-primary btn-sm active" href="/home_render" role="button" >Home</a>
+		<a class="btn btn-default btn-sm" href="#" role="button" disabled="disabled">Sign Up</a>
+		<a class="btn btn-primary btn-sm active" href="/helprender" role="button">Help</a>
+		<a class="btn btn-primary btn-sm active" href="/Loginrender" role="button">Log out</a>
 		</div>
-		<div id="main-login" class="login-button2" tabindex="130">
-			<label><a href="/Loginrender">Log out</a></label>
-		</div>
-	</div>
-
-
-	<link rel='stylesheet' type='text/css' href='css/home1.css'/>
-
-	<div id="header"><h1>Welcome To Twitter based Search!</h1></div>
-	<center>
-	<div class="twitter">
-		<div id="wrapper">
-			<div id="inputs">
-				<font size="4.5"> 
-				<br/><br/>
-					<div class="id">
-						<br> 
-						<span style="padding-left:10px"><input type="radio" name="rcheck" value="0" checked onChange="disableTwitterIDFields();"><label>Use default Twitter id for getting tweets </label></span><br>
-						<span style="padding-left:10px"><input type="radio" name="rcheck" value="1" onChange="enableTwitterIDFields();"><label>Use this Twitter id for getting tweets</label></span>  <br>
+		<div id="header"><h1>Welcome To Twitter based Search!</h1></div>
+		<form action="/twit_details" method="POST" onsubmit="return checkForm();" class="navbar-form navbar-center">
+			<div class="panel panel-primary">
+				<div class=panel-heading>
+					<div class="panel-body">
+						<div class="radio">
+							<label>
+							<input type="radio" name="rcheck" id="rcheck" value="0" onChange="disableTwitterIDFields();" checked></input>
+							Use default Twitter id for getting tweets
+							</label>
+						</div>
 						<br/>
-						<span style="padding-left:10px">Twitter ID: <input type="text" name="twitterid" value="{{var}}" placeholder="twitter id of user" disabled="disabled"></span>
-						<span style="padding-left:10px"><a href="#" name="twitteridLink">click here to get twitter ID</a> </span>
+						<div class="radio">
+							<label>
+							<input type="radio" name="rcheck" id="rcheck" value="1" onChange="enableTwitterIDFields();"></input>
+							Use this Twitter id for getting tweets
+							</label>
+						</div>
+						<br/><br/>
+						<div class="form-group">
+							<label for="twitterid">Twitter ID</label>
+							<input type="text" class="form-control" id="twitterid" name="twitterid" placeholder="twitter id of user" value="{{var}}" disabled="disabled"></input>
+							
+							<a href="#" style="color:white;" name="twitteridLink">click here to get twitter ID</a>
+						</div>
 					</div>
-					<br/>
-					<div class="id">  
-						<span style="padding-left:50px">Keyword: <input type="text" name="keyword2" placeholder="Keyword to be searched"> </span>
-						<span style="padding-left:70px">No.of Tweets: <input type="text" name="maxcount" placeholder="Count of tweets to fetch"></span>
-						<br/>
+					<hr/>
+					<div class="form-group">
+						<label for="keyword2">Keyword</label>
+						<input type="text" class="form-control" id="keyword2" name="keyword2" placeholder="Keyword to be searched"></input>
+					</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<div class="form-group">
+						<label for="maxcount">No.of Tweets</label>
+						<input type="text" class="form-control" id="maxcount" name="maxcount" placeholder="Count of tweets to fetch"></input>
 					</div>
-				</font>
+				</div>
 			</div>
-			<br/>
-			<br/>
-		</div>
-		<div>
-			<input type="submit"  name=btn value="DirectSearch" />
-			<input type="submit"  name=btn value="BehavioralSearch" />
-			<input type="submit"  name=btn value="Cancel" />
-		</div>
+			<div>
+				<input type="submit"  name=btn value="DirectSearch" class="btn btn-primary btn-sm active"/>
+				<input type="submit"  name=btn value="BehavioralSearch" class="btn btn-primary btn-sm active"/>
+				<input type="submit"  name=btn value="Cancel" class="btn btn-danger btn-sm active"/>
+			</div>
+		</form>
 	</div>
-	</center>
-	</form>
 </body>
 
 </html>

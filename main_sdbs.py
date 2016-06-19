@@ -79,10 +79,9 @@ def Login():
         cur = con.cursor()
         cur.execute("SELECT * from signup")
 	num=int(cur.rowcount)
-        print num
+
 	for i in range (num):
             row = cur.fetchone()
-            print row
             if (row):
                 if(email==row[0] and passwd==row[1]):
                     flag=1
@@ -111,7 +110,6 @@ def check_selected_media_options():
 @app.route('/twit_details' , methods=['POST','GET'])
 def twit_details():
     keyword = request.form['keyword2']
-    print keyword
     linkid=request.form['rcheck']
     twitid=request.form['twitterid']
     maxcnt=int(request.form['maxcount'])
@@ -124,13 +122,13 @@ def twit_details():
    
     if (linkid=="0" and button=="BehavioralSearch"):
         for d in csv.DictReader(open('csv\\'+keyword+'.csv'), delimiter='\t'):
-            counts.append((d[keyword])) 
+			counts.append((d[keyword])) 
     
         os.system(("python linking_through_twitid.py") )
 	for i in range(0,len(counts)):
-            os.system(("python globalsearch.py {} {}".format(maxcnt,counts[i])) ) 
-	    os.system(("python store_globaldata_to_sql.py {}".format(counts[i])) )
-        os.system("python pagifin.py")            
+		os.system(("python globalsearch.py {} {}".format(maxcnt,counts[i])) ) 
+		os.system(("python store_globaldata_to_sql.py {} {}".format(maxcnt, counts[i])) )
+	return redirect(url_for('twitpagination'))            
     
     if (linkid=="1" and button=="BehavioralSearch"):
         for d in csv.DictReader(open(keyword+'.csv'), delimiter='\t'):
@@ -138,29 +136,20 @@ def twit_details():
 	os.system(("python linking_through_twitid.py {}".format(twitid)) )
 	for i in range(0,len(counts)):
 		os.system(("python globalsearch.py {} {}".format(maxcnt,counts[i])) ) 
-		os.system(("python store_globaldata_to_sql.py {}".format(counts[i])) )
-		os.system("python pagifin.py")
-
-    if (linkid=="2" and button=="BehavioralSearch"): 
-        for d in csv.DictReader(open(keyword+'.csv'), delimiter='\t'):
-            counts.append((d[keyword])) 
-    	
-	for i in range(0,len(counts)):
-		os.system(("python globalsearch.py {} {}".format(maxcnt,counts[i])) ) 
-		os.system(("python store_globaldata_to_sql.py {}".format(counts[i])) )
-		os.system("python pagifin.py") 
+		os.system(("python store_globaldata_to_sql.py {} {}".format(maxcnt, counts[i])) )
+	return redirect(url_for('twitpagination'))
 	
     if (linkid=="0" and button=="DirectSearch"):
         os.system(("python linking_through_twitid.py") )
         os.system(("python globalsearch.py {} {}".format(maxcnt,'"'+keyword+'"')) ) 
-	os.system(("python store_globaldata_to_sql.py {}".format('"'+keyword+'"')) )
+	os.system(("python store_globaldata_to_sql.py {} {}".format(maxcnt,'"'+keyword+'"')) )
         return redirect(url_for('twitpagination'))
        
         
     if (linkid=="1" and button=="DirectSearch"):
         os.system(("python linking_through_twitid.py {}".format(twitid)) )
 	os.system(("python globalsearch.py {} {}".format(maxcnt,'"'+keyword+'"')) ) 
-	os.system(("python store_globaldata_to_sql.py {}".format('"'+keyword+'"')) )
+	os.system(("python store_globaldata_to_sql.py {} {}".format(maxcnt,'"'+keyword+'"')) )
         return redirect(url_for('twitpagination'))
 
     if (button=="Cancel"):
@@ -169,18 +158,13 @@ def twit_details():
 
 @app.route('/twitpagination' , methods=['POST','GET'])
 def twitpagination():
-    print "h1"
     page, per_page, offset = get_page_items()
-    print "h2"
     with con:
-        print "con"
         cur = con.cursor()	
         cnt=cur.execute("SELECT * from filter_global_tweets")
-        print cnt
         cur.execute("SELECT * from filter_global_tweets limit {},{}".format(offset,per_page))
         user = cur.fetchall()
         total=cur.fetchone()
-        print user
         pagination = get_pagination(page=page,
                                 per_page=per_page,
                                 total=cnt,
@@ -188,9 +172,8 @@ def twitpagination():
                                 format_total=True,
                                 format_number=True,
                                 )
-        print "Pgiiiiiiiiii"
     
-    return render_template('pagi1.html', user=user,
+    return render_template('results.html', user=user,
                            page=page,
                            per_page=per_page,
                            pagination=pagination,
