@@ -3,7 +3,24 @@
 {% if user %}
  {{ pagination.info }}
   {{ pagination.links }}
-  <html>
+<html>
+<head>
+<title>Facebook based Search</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> </link>
+	<link href="../static/bootstrap-3.3.6-dist/css/signin.css" rel="stylesheet"></link>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+		<div class="well well-lg" style="background: #337ab7; color:white;"><h1>Social Driven Behavior and Search</h1></div>
+		<div align="right">
+		<a class="btn btn-primary btn-sm active" href="/home_render" role="button" >Home</a>
+		<a class="btn btn-default btn-sm" href="#" role="button" disabled="disabled">Sign Up</a>
+		<a class="btn btn-primary btn-sm active" href="/helprender" role="button">Help</a>
+		<a class="btn btn-primary btn-sm active" href="/Loginrender" role="button">Log out</a>
+		</div>
+		<div id="header"><h1>Welcome To Facebook based Search!</h1></div>
  <form method="POST">
     <table border=2>
     <thead>
@@ -26,7 +43,9 @@
     </tbody>
     </table>
    </form>  
-  </html>
+ </div>
+ </body>
+ </html>
   {{ pagination.links }}
 {% endif %}
 {% endblock %}

@@ -387,23 +387,21 @@ def reset_password_store():
 @app.route('/fb_details' , methods=['POST','GET'])
 def fb_details():
     keyword = request.form['fbkeyword']
-    maxcnt=int(request.form['fbmaxcnt'])
+    maxcnt=request.form['fbmaxcnt']
+    if(maxcnt!=""):
+		maxcnt=int(maxcnt)
     button=request.form['btn']
     if(button=="DirectSearch"):
-  
 	keyword="'"+keyword+"'"
-	print "key:",keyword
 
         os.system(("python fb_global.py {} {} ".format((keyword),(maxcnt))) )         
         page, per_page, offset = get_page_items()
         with con:
             cur = con.cursor()	
             cnt=cur.execute("SELECT * from fb_post")
-            print "*********************************"
             cur.execute("SELECT * from fb_post limit {},{}".format(offset,per_page))
             user = cur.fetchall()
             total=cur.fetchone()
-            print "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
             pagination = get_pagination(page=page,
                                 per_page=per_page,
                                 total=cnt,
@@ -411,11 +409,10 @@ def fb_details():
                                 format_total=True,
                                 format_number=True,
                                 )
-        os.system("python pagifin1.py")
+        return redirect(url_for(os.system("python pagifinFacebook.py")))
 
     if (button=="Cancel"):
-        
-        return render_template('facebook_main.html')
+        return render_template('social_media_option.html')
 
     if(button=="BehaviorSearch"):
         for d in csv.DictReader(open(keyword+'.csv'), delimiter='\t'):
@@ -437,9 +434,7 @@ def fb_details():
                                 format_total=True,
                                 format_number=True,
                                 )
-        os.system("python pagifin1.py")
-
-            
+        return redirect(url_for(os.system("python pagifinFacebook.py")))
     return render_template('social_media_option.html') 
   
 if __name__ == "__main__":

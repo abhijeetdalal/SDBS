@@ -2,83 +2,65 @@
 <html>
  
 <head>
-<style>
-
-</style>
+<title>Facebook based Search</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> </link>
+	<link href="../static/bootstrap-3.3.6-dist/css/signin.css" rel="stylesheet"></link>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		var whichPressed;
+		function checkForm(form) {
+			if(whichPressed != 'Cancel') {
+				var fbkeywordField = document.getElementById('fbkeyword');
+				if(fbkeywordField.value.trim() == "") {
+					alert("Please enter keyword!");
+					fbkeywordField.focus();
+					return false;
+				}
+				var fbmaxcntField = document.getElementById('fbmaxcnt');
+				if(fbmaxcntField.value.trim() == "") {
+					alert("Please enter keyword!");
+					fbmaxcntField.focus();
+					return false;
+				}
+			}
+		}
+</script>
 </head>
 <body>
-
-<script type="text/javascript">
- function checkForm(form)
- { 
-
-if(form.fbkeyword.value == "") { alert("Please enter keyword!"); form.fbkeyword.focus(); return false; } 
-
-if(form.fbmaxcnt.value =="") { alert("Please enter number of tweets"); form.fbmaxcnt.focus(); return false; }
-
- } 
-
-
-
-</script>
-
-<link rel="stylesheet" href="../static/css/home1.css">
-<div class="center_div">
-  <h1>Social Driven Behavior and Search</h1>
-</div>
-
- <div class="login-buttons">
-	    	    <div id="main-login" class="login-button2" tabindex="130">
-			<label><a href="/home_render">Home</a></label>
-	 
+	<div class="container">
+		<div class="well well-lg" style="background: #337ab7; color:white;"><h1>Social Driven Behavior and Search</h1></div>
+		<div align="right">
+		<a class="btn btn-primary btn-sm active" href="/home_render" role="button" >Home</a>
+		<a class="btn btn-default btn-sm" href="#" role="button" disabled="disabled">Sign Up</a>
+		<a class="btn btn-primary btn-sm active" href="/helprender" role="button">Help</a>
+		<a class="btn btn-primary btn-sm active" href="/Loginrender" role="button">Log out</a>
 		</div>
-	    	    <div id="main-login" class="login-button2" tabindex="130">
-			<label><a href="/Loginrender">Log out</a></label>
-	     
-		</div>
-			  </div>
+		<div id="header"><h1>Welcome To Facebook based Search!</h1></div>
 
-
-
-
-
-
-    <head>
-        <form action="/fb_details" method="POST" ... onsubmit="return checkForm(this);">
-        <title>Facebook main page</title>
-        <link rel='stylesheet' type='text/css' href='../static/css/home1.css'/>
-        
-    </head>
-   
-<br>
-<br>
-<br>
-        <div id="header"><h1>Welcome To Facebook!</h1></div>
-<div class="twitter">
-        <div id="wrapper">
-            <div id="inputs">
-
-                <form ><font size="4.5"> 
-		<br><br>
-<div class="id">            	
-		<span style="padding-left:50px">   Keyword: <input type="text" name="fbkeyword" placeholder="Keyword to be searched"><span style="padding-left:70px">
-            	   Number of Pages: <input type="text" name="fbmaxcnt" placeholder="Number of Pages"><br></div>
-<br>
-
-</div></font>
-</center>
-<center> 
-<br>
-<br>                    
-<input type="submit"  name=btn value="DirectSearch" >
-<input type="submit"  name=btn value="BehavioralSearch" >
-<input type="submit"  name=btn value="Cancel" >
-
-</center>
-               
-            </div>
-        </div>
-</div>
-    </body>
-</form>
+		
+		
+        <form action="/fb_details" method="POST" onsubmit="return checkForm(this);" class="navbar-form navbar-center" id="facebookMainForm">
+			<div class="panel panel-primary">
+				<div class=panel-heading>
+					<div class="panel-body">
+						<div class="form-group">
+							<label for="fbkeyword">Keyword</label>
+							<input type="text" class="form-control" id="fbkeyword" name="fbkeyword" placeholder="Keyword to be searched"></input>
+						</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<div class="form-group">
+							<label for="fbmaxcnt">Number of Pages</label>
+							<input type="text" class="form-control" id="fbmaxcnt" name="fbmaxcnt" placeholder="Number of Pages"></input>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<input type="submit"  name=btn value="DirectSearch" class="btn btn-primary btn-sm active" onclick="whichPressed=this.value"/>
+				<input type="submit"  name=btn value="BehavioralSearch" class="btn btn-primary btn-sm active"onclick="whichPressed=this.value"/>
+				<input type="submit"  name=btn value="Cancel" class="btn btn-danger btn-sm active"onclick="whichPressed=this.value"/>
+			</div>
+		</form>
+	</div>
+</body>
 </html>
